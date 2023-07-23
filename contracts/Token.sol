@@ -9,15 +9,16 @@ contract Token {
 	uint public decimals = 18;
 	uint public totalSupply; // 1 million x 10^18
 	
+	mapping (address => uint) public balanceOf;
+
 	constructor(
 		string memory _name, 
 		string memory _symbol, 
-		uint _decimals, 
 		uint _totalSupply
 	) {
 		name = _name;
 		symbol = _symbol;
-		decimals = _decimals;
 		totalSupply = _totalSupply * (10**decimals);
+		balanceOf[msg.sender] = totalSupply;
 	}	 
 }
